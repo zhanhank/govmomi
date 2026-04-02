@@ -114,7 +114,8 @@ func TestClient(t *testing.T) {
 		t.Fatal(err)
 	}
 	t.Logf("Control flag: FCD_KEEP_AFTER_DELETE_VM set for the volumeId: %s", volumeId)
-	err = globalObjectManager.ClearControlFlags(ctx, types.ID{Id: volumeId})
+	err = globalObjectManager.ClearControlFlags(ctx, types.ID{Id: volumeId}, []string{
+		string(types.VslmVStorageObjectControlFlagKeepAfterDeleteVm)})
 	if err != nil {
 		t.Fatal(err)
 	}

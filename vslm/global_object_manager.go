@@ -383,10 +383,11 @@ func (this *GlobalObjectManager) SetControlFlags(ct context.Context, id vim.ID, 
 	return nil
 }
 
-func (this *GlobalObjectManager) ClearControlFlags(ct context.Context, id vim.ID) error {
+func (this *GlobalObjectManager) ClearControlFlags(ct context.Context, id vim.ID, controlFlags []string) error {
 	req := types.VslmClearVStorageObjectControlFlags{
-		This: this.Reference(),
-		Id:   id,
+		This:         this.Reference(),
+		Id:           id,
+		ControlFlags: controlFlags,
 	}
 
 	_, err := methods.VslmClearVStorageObjectControlFlags(ct, this.c, &req)
